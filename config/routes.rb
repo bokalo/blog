@@ -11,6 +11,7 @@ end
    root 'main_pages#welcome'
    get 'help', to: 'main_pages#help'
    get 'about_us', to: 'main_pages#about_us'
+   get 'admin', to: 'admin#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

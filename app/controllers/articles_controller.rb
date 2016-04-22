@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
   before_filter :find_article, only: [:show, :edit, :update, :destroy]
+  before_filter :check_if_admin, only: [:edit, :update, :new, :create, :destroy]
 
   #http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
@@ -53,8 +54,10 @@ private
   end
 
   def find_article
-    @article = Article.find(params[:id])
-  end
+    @article = Article.where(id: params[:id]).first
+    render_404 unless @article
+
+    end
 
   end
 
